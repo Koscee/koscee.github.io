@@ -26,15 +26,11 @@ concurrency:
 env:
   artifact_name: build-artifact
   artifact_path: dist
-  push_on_main: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo env.push_on_main:
-          echo ${{ env.push_on_main }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get yarn cache directory path
