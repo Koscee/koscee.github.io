@@ -2,9 +2,12 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pull request targeting the specified branches
+  pull_request:
+    branches: [main]
+  # Runs on pushes targeting the specified branches
   push:
-    branches: ['main']
+    branches: [main, develop]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,12 +23,12 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
+env:
+  artifact_name: build-artifact
+  artifact_path: dist
+
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -50,13 +53,34 @@ jobs:
         run: yarn lint
       - name: Build
         run: yarn build
+      - name: Archive artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.artifact_name }}
+          path: ${{ env.artifact_path }}
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref_name == 'main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.artifact_name }}
+          path: ${{ env.artifact_path }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
-          path: './dist'
+          path: ${{ env.artifact_path }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
