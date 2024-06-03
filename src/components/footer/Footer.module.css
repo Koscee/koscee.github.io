@@ -1,0 +1,23 @@
+.footer {
+  width: 100%;
+  padding: 34px 0;
+  background-color: var(--color-tertiary);
+}
+
+.footer_links {
+  width: 250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_link,
+.footer_link svg {
+  width: 28px;
+  height: 28px;
+}
+
+.footer_link:hover svg path {
+  fill: var(--color-accent);
+}

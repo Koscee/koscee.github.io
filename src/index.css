@@ -1,0 +1,125 @@
+:root {
+  /* Colors */
+  --color-yellow: #ffcc00;
+  --color-black: #0f0f0f;
+  --color-light-black: #191919;
+  --color-yellow-black: #151411;
+  --color-white: #ebebeb;
+
+  --color-primary: var(--color-black);
+  --color-tertiary: var(--color-light-black);
+  --color-accent: var(--color-yellow);
+
+  /* Font sizes */
+  --font-size-h1: 2.25rem /* 36px */;
+  --font-size-h2: 1.75rem /* 28px */;
+  --font-size-h3: 1.5rem /* 24px */;
+  --font-size-h4: 1.25rem /* 20px */;
+  --font-size-h5: 1.125rem /* 18px */;
+  --font-size-h6: 1rem /* 16px */;
+  --font-size-text: 0.875rem /* 14px */;
+  --font-size-caption: 0.75rem /* 12px */;
+
+  /* Spacing */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-s: 12px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Shadows */
+  --shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Border radius */
+  --border-radius-xs: 2px;
+  --border-radius-s: 4px;
+  --border-radius-m: 8px;
+  --border-radius-l: 16px;
+
+  font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  letter-spacing: 1.8px;
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  letter-spacing: 1.1px;
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  letter-spacing: 0.8px;
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+  letter-spacing: 0.5px;
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+  letter-spacing: 0.4px;
+}
+
+p {
+  font-size: var(--font-size-text);
+  letter-spacing: 0.3px;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  width: 100%;
+  padding-block: var(--spacing-xxl);
+}
+
+.section_title {
+  font-size: calc(var(--font-size-h1) - 2px);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+}
+
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 12px;
+  }
+  section {
+    padding-block: var(--spacing-l);
+  }
+
+  .section_title {
+    margin-bottom: var(--spacing-l);
+  }
+}

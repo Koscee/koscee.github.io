@@ -1,0 +1,49 @@
+.btn {
+  --btn-text-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: var(--color-accent);
+  color: var(--btn-text-color);
+  border: none;
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-xs) var(--spacing-m);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  font-family: inherit;
+  font-size: var(--font-size-h5);
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+.btn:hover {
+  filter: brightness(0.85);
+}
+
+.btn svg {
+  width: 25px;
+  height: 25px;
+}
+.btn svg > path {
+  fill: var(--btn-text-color);
+}
+
+.primary {
+  --btn-text-color: var(--color-primary);
+  background-color: var(--color-accent);
+  outline: 1.5px solid var(--color-accent);
+}
+
+.secondary {
+  --btn-text-color: var(--color-accent);
+  background-color: var(--color-tertiary);
+  outline: 1.5px solid var(--color-tertiary);
+}
+
+.outline {
+  --btn-text-color: var(--color-accent);
+  background-color: transparent;
+  outline: 1.5px solid var(--color-accent);
+}

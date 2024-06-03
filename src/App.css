@@ -1,0 +1,30 @@
+.app_wrapper {
+  min-width: 250px;
+  min-height: 100vh;
+  padding: 40px 0 0;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app_wrapper > * {
+  padding-inline: 20px;
+}
+
+/* tablet device */
+@media only screen and (min-width: 768px) {
+  .app_wrapper {
+    min-width: 768px;
+  }
+}
+
+/* desktop device */
+@media only screen and (min-width: 1024px) {
+  .app_wrapper {
+    min-width: 1024px;
+  }
+}

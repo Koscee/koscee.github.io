@@ -1,0 +1,74 @@
+.carousel {
+  --item-spacing: var(--spacing-s);
+  --animation-duration: 35s;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+.carousel:hover .carousel_slider {
+  animation-play-state: paused;
+}
+.carousel::before,
+.carousel::after {
+  content: '';
+  width: calc(var(--item-spacing) * 2);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+.carousel::before {
+  left: 0;
+  background: linear-gradient(to left, transparent 0, var(--color-primary) 40%);
+}
+.carousel::after {
+  right: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0,
+    var(--color-primary) 40%
+  );
+}
+
+.carousel_slider {
+  display: inline-block;
+  animation: slider var(--animation-duration) infinite linear;
+}
+
+@keyframes slider {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.carousel_item {
+  display: inline-block;
+  margin: 0 var(--item-spacing);
+}
+.carousel_item svg {
+  width: 35px;
+  height: 35px;
+}
+
+@media only screen and (min-width: 768px) {
+  .carousel {
+    --item-spacing: var(--spacing-m);
+  }
+  .carousel_item svg {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .carousel {
+    --item-spacing: var(--spacing-l);
+  }
+  .carousel_item svg {
+    width: 65px;
+    height: 65px;
+  }
+}
